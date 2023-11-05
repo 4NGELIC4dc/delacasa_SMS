@@ -5,6 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import java.text.*;
 /**
  * @author Angelica DC
  */
@@ -129,6 +130,8 @@ public class DisplayFrame extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(102, 255, 204));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 153), 5, true));
 
+        chooseBday.setDateFormatString("yyyy-MM-dd");
+
         selectGender.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         selectGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male" }));
 
@@ -143,6 +146,12 @@ public class DisplayFrame extends javax.swing.JFrame {
         selectStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectStatusActionPerformed(evt);
+            }
+        });
+
+        txtMobile.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMobileKeyTyped(evt);
             }
         });
 
@@ -599,7 +608,7 @@ public class DisplayFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Invalid input. Student ID is too long.");
             return false;
         }
-        if (txtMobile.getText().length() < 6) {
+        if (txtID.getText().length() <6) {
         JOptionPane.showMessageDialog(this, "Invalid input. Student ID is too short.");
             return false;
         }
@@ -627,7 +636,7 @@ public class DisplayFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Invalid input. Student Mobile Number is too long.");
             return false;
         }
-        if (txtMobile.getText().length() < 11) {
+        if (txtMobile.getText().length() <11) {
         JOptionPane.showMessageDialog(this, "Invalid input. Student Mobile Number is too short.");
          return false;
         }
@@ -696,9 +705,28 @@ public class DisplayFrame extends javax.swing.JFrame {
     private void btnAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewActionPerformed
         // TODO add your handling code here:
         if(isEmptyStudent()){
+        //int id=student.getMax(); (need to fix later)
+        String sID=txtID.getText();
+        String sName=txtName.getText();
+        String sEmail=txtEmail.getText();
+        String sMobile=txtMobile.getText();
+        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        Date sBirthdate=chooseBday.getDate();
+        String sGender=selectGender.getSelectedItem().toString();
+        String sBranch=selectBranch.getSelectedItem().toString();
+        String sProgram=selectProgram.getSelectedItem().toString();
+        String sStatus=selectStatus.getSelectedItem().toString();
         
+        Student newStudent = new Student(sID, sName, sEmail, sMobile, sBirthdate, sGender, sBranch, sProgram, sStatus);
         }
     }//GEN-LAST:event_btnAddNewActionPerformed
+
+    private void txtMobileKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMobileKeyTyped
+        // TODO add your handling code here:
+        if(!Character.isDigit(evt.getKeyChar())){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txtMobileKeyTyped
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
