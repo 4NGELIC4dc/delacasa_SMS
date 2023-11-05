@@ -1,14 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package delacasa_sms;
 import java.awt.Color;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.*;
 import java.util.logging.Logger;
 import java.util.logging.Level;
-
 /**
  * @author Angelica DC
  */
@@ -19,7 +15,6 @@ public class DisplayFrame extends javax.swing.JFrame {
         initComponents();
         init();
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -52,7 +47,7 @@ public class DisplayFrame extends javax.swing.JFrame {
         btnAddNew = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
-        btnLogout = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         labelSearchStudent = new javax.swing.JLabel();
         txtSearchBar = new javax.swing.JTextField();
@@ -194,6 +189,11 @@ public class DisplayFrame extends javax.swing.JFrame {
         btnAddNew.setBackground(new java.awt.Color(204, 255, 255));
         btnAddNew.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnAddNew.setText("Add New");
+        btnAddNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddNewActionPerformed(evt);
+            }
+        });
 
         btnDelete.setBackground(new java.awt.Color(204, 255, 255));
         btnDelete.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -208,12 +208,12 @@ public class DisplayFrame extends javax.swing.JFrame {
             }
         });
 
-        btnLogout.setBackground(new java.awt.Color(204, 255, 255));
-        btnLogout.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnLogout.setText("Logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+        btnExit.setBackground(new java.awt.Color(204, 255, 255));
+        btnExit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
+                btnExitActionPerformed(evt);
             }
         });
 
@@ -279,7 +279,7 @@ public class DisplayFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnClear)
                 .addGap(18, 18, 18)
-                .addComponent(btnLogout)
+                .addComponent(btnExit)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -327,7 +327,7 @@ public class DisplayFrame extends javax.swing.JFrame {
                     .addComponent(btnAddNew)
                     .addComponent(btnDelete)
                     .addComponent(btnClear)
-                    .addComponent(btnLogout))
+                    .addComponent(btnExit))
                 .addContainerGap())
         );
 
@@ -356,6 +356,102 @@ public class DisplayFrame extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -490,6 +586,65 @@ public class DisplayFrame extends javax.swing.JFrame {
     selectStatus.setSelectedIndex(0);
     jTable2.clearSelection();
     }
+    public boolean isEmptyStudent(){
+        if(txtID.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please input Student ID.");
+            return false;
+        }
+        if(!txtID.getText().matches("^[A-Z0-9]+$")){
+            JOptionPane.showMessageDialog(this,"Invalid input. Student ID contains invalid characters.");
+            return false;
+        }
+        if(txtID.getText().length()>=7){
+            JOptionPane.showMessageDialog(this,"Invalid input. Student ID is too long.");
+            return false;
+        }
+        if (txtMobile.getText().length() < 6) {
+        JOptionPane.showMessageDialog(this, "Invalid input. Student ID is too short.");
+            return false;
+        }
+        if(txtName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please input Student Name.");
+            return false;
+        }
+        if(!txtName.getText().matches("^[A-Za-z.\\s]+$")){
+            JOptionPane.showMessageDialog(this,"Invalid input. Student Name contains invalid characters.");
+            return false;
+        }
+        if(txtEmail.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please input Student Email Address.");
+            return false;
+        }
+        if(!txtEmail.getText().matches("^[a-z]+@[a-z]+\\.[a-z]+$")){
+            JOptionPane.showMessageDialog(this,"Invalid input. Student Email Address contains invalid characters.");
+            return false;
+        }
+        if(txtMobile.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please input Student Mobile Number.");
+            return false;
+        }
+        if(txtMobile.getText().length()>=12){
+            JOptionPane.showMessageDialog(this,"Invalid input. Student Mobile Number is too long.");
+            return false;
+        }
+        if (txtMobile.getText().length() < 11) {
+        JOptionPane.showMessageDialog(this, "Invalid input. Student Mobile Number is too short.");
+         return false;
+        }
+        if(!txtMobile.getText().matches("^[0-9]+$")){
+            JOptionPane.showMessageDialog(this,"Invalid input. Student Mobile Number contains invalid characters.");
+            return false;
+        }
+        if(chooseBday.getDate()==null){
+            JOptionPane.showMessageDialog(this,"Please input Student Birth Date.");
+            return false;
+        }
+        if (chooseBday.getDate().compareTo(new Date()) > 0) {
+        JOptionPane.showMessageDialog(this, "Invalid input. Student Birth Date exceeding current date are not allowed.");
+        return false;
+        }
+        return true;
+    }
     private void selectStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectStatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_selectStatusActionPerformed
@@ -498,13 +653,13 @@ public class DisplayFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchBarActionPerformed
 
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(this, "Are you sure you want to log out?","Select",JOptionPane.YES_NO_OPTION);
+        int a = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit?","Select",JOptionPane.YES_NO_OPTION);
         if(a==0){
             this.dispose();
         }
-    }//GEN-LAST:event_btnLogoutActionPerformed
+    }//GEN-LAST:event_btnExitActionPerformed
 
     private void jPanel6MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseDragged
         // TODO add your handling code here:
@@ -537,6 +692,13 @@ public class DisplayFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         clearStudent();
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewActionPerformed
+        // TODO add your handling code here:
+        if(isEmptyStudent()){
+        
+        }
+    }//GEN-LAST:event_btnAddNewActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -574,7 +736,7 @@ public class DisplayFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnAddNew;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
