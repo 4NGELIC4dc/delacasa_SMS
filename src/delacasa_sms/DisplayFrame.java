@@ -2,6 +2,7 @@ package delacasa_sms;
 import java.awt.Color;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -50,11 +51,12 @@ public class DisplayFrame extends javax.swing.JFrame {
         labelBranch = new javax.swing.JLabel();
         labelProgram = new javax.swing.JLabel();
         labelStatus = new javax.swing.JLabel();
-        btnUpdate = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         btnAddNew = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         labelSearchStudent = new javax.swing.JLabel();
         txtSearchBar = new javax.swing.JTextField();
@@ -197,12 +199,12 @@ public class DisplayFrame extends javax.swing.JFrame {
         labelStatus.setForeground(new java.awt.Color(0, 102, 102));
         labelStatus.setText("Status");
 
-        btnUpdate.setBackground(new java.awt.Color(204, 255, 255));
-        btnUpdate.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+        btnEdit.setBackground(new java.awt.Color(204, 255, 255));
+        btnEdit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
+                btnEditActionPerformed(evt);
             }
         });
 
@@ -242,11 +244,20 @@ public class DisplayFrame extends javax.swing.JFrame {
             }
         });
 
+        btnUpdate.setBackground(new java.awt.Color(204, 255, 255));
+        btnUpdate.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
@@ -255,57 +266,56 @@ public class DisplayFrame extends javax.swing.JFrame {
                         .addComponent(selectGender, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(labelBranch, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(selectBranch, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                    .addComponent(labelProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(selectProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                    .addComponent(labelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(selectStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(labelBranch, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(selectBranch, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(labelProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(selectProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(labelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(selectStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(labelMobile, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtMobile))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtEmail)))
-                        .addGap(122, 122, 122))))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEmail))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtName))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelBirthdate, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chooseBday, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(122, 122, 122))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(btnAddNew, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtName))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelBirthdate, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chooseBday, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(122, 122, 122))
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(btnUpdate)
-                .addGap(18, 18, 18)
-                .addComponent(btnAddNew)
-                .addGap(18, 18, 18)
-                .addComponent(btnDelete)
-                .addGap(18, 18, 18)
-                .addComponent(btnClear)
-                .addGap(18, 18, 18)
-                .addComponent(btnExit)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(119, 119, 119))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,11 +358,12 @@ public class DisplayFrame extends javax.swing.JFrame {
                     .addComponent(selectStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdate)
+                    .addComponent(btnEdit)
                     .addComponent(btnAddNew)
-                    .addComponent(btnDelete)
                     .addComponent(btnClear)
-                    .addComponent(btnExit))
+                    .addComponent(btnExit)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDelete))
                 .addContainerGap())
         );
 
@@ -372,10 +383,20 @@ public class DisplayFrame extends javax.swing.JFrame {
         btnSearch.setBackground(new java.awt.Color(204, 255, 255));
         btnSearch.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         btnRefresh.setBackground(new java.awt.Color(204, 255, 255));
         btnRefresh.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
 
         jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 153), 5, true));
 
@@ -529,7 +550,7 @@ public class DisplayFrame extends javax.swing.JFrame {
                     .addComponent(labelSearchStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -571,7 +592,7 @@ public class DisplayFrame extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -635,60 +656,60 @@ public class DisplayFrame extends javax.swing.JFrame {
     }
     public boolean isEmptyStudent(){
         if(txtID.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this,"Please input Student ID.");
+            JOptionPane.showMessageDialog(this,"Please input Student ID.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if(!txtID.getText().matches("^[A-Z0-9]+$")){
-            JOptionPane.showMessageDialog(this,"Invalid input. Student ID contains invalid characters.");
+            JOptionPane.showMessageDialog(this,"Invalid input. Student ID contains invalid characters.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if(txtID.getText().length()>=7){
-            JOptionPane.showMessageDialog(this,"Invalid input. Student ID is too long.");
+            JOptionPane.showMessageDialog(this,"Invalid input. Student ID is too long.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (txtID.getText().length() <6) {
-        JOptionPane.showMessageDialog(this, "Invalid input. Student ID is too short.");
+        JOptionPane.showMessageDialog(this, "Invalid input. Student ID is too short.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if(txtName.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this,"Please input Student Name.");
+            JOptionPane.showMessageDialog(this,"Please input Student Name.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if(!txtName.getText().matches("^[A-Za-z.\\s]+$")){
-            JOptionPane.showMessageDialog(this,"Invalid input. Student Name contains invalid characters.");
+            JOptionPane.showMessageDialog(this,"Invalid input. Student Name contains invalid characters.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if(txtEmail.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this,"Please input Student Email Address.");
+            JOptionPane.showMessageDialog(this,"Please input Student Email Address.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (!txtEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-            JOptionPane.showMessageDialog(this, "Invalid input. Student Email Address is not valid.");
+            JOptionPane.showMessageDialog(this, "Invalid input. Student Email Address is not valid.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
 
         if(txtMobile.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this,"Please input Student Mobile Number.");
+            JOptionPane.showMessageDialog(this,"Please input Student Mobile Number.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if(txtMobile.getText().length()>=12){
-            JOptionPane.showMessageDialog(this,"Invalid input. Student Mobile Number is too long.");
+            JOptionPane.showMessageDialog(this,"Invalid input. Student Mobile Number is too long.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (txtMobile.getText().length() <11) {
-        JOptionPane.showMessageDialog(this, "Invalid input. Student Mobile Number is too short.");
+        JOptionPane.showMessageDialog(this, "Invalid input. Student Mobile Number is too short.","Message",JOptionPane.WARNING_MESSAGE);
          return false;
         }
         if(!txtMobile.getText().matches("^[0-9]+$")){
-            JOptionPane.showMessageDialog(this,"Invalid input. Student Mobile Number contains invalid characters.");
+            JOptionPane.showMessageDialog(this,"Invalid input. Student Mobile Number contains invalid characters.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if(chooseBday.getDate()==null){
-            JOptionPane.showMessageDialog(this,"Please input Student Birth Date.");
+            JOptionPane.showMessageDialog(this,"Please input Student Birth Date.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
         if (chooseBday.getDate().compareTo(new Date()) > 0) {
-        JOptionPane.showMessageDialog(this, "Invalid input. Student Birth Date exceeding current date are not allowed.");
+        JOptionPane.showMessageDialog(this, "Invalid input. Student Birth Date exceeding current date are not allowed.","Message",JOptionPane.WARNING_MESSAGE);
         return false;
         }
         return true;
@@ -703,7 +724,7 @@ public class DisplayFrame extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit?","Select",JOptionPane.YES_NO_OPTION);
+        int a = JOptionPane.showConfirmDialog(this, "Are you sure you want to exit?","Message",JOptionPane.YES_NO_OPTION);
         if(a==0){
             this.dispose();
         }
@@ -738,13 +759,15 @@ public class DisplayFrame extends javax.swing.JFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
+        int choice = JOptionPane.showConfirmDialog(this,"Are you sure you want to clear all input fields?","Message",JOptionPane.YES_NO_OPTION );
+        if(choice==JOptionPane.YES_OPTION){
         clearStudent();
+        }
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewActionPerformed
         // TODO add your handling code here:
         if(isEmptyStudent()){
-        //int id=student.getMax(); (need to fix later)
         String sID=txtID.getText();
         String sName=txtName.getText();
         String sEmail=txtEmail.getText();
@@ -756,6 +779,9 @@ public class DisplayFrame extends javax.swing.JFrame {
         String sProgram=selectProgram.getSelectedItem().toString();
         String sStatus=selectStatus.getSelectedItem().toString();
         
+        if(isDuplicateEntry(sID, sName, sEmail, sMobile)){
+        JOptionPane.showMessageDialog(this, "Provided Student Information already exists.", "Message",JOptionPane.INFORMATION_MESSAGE);
+        }else{
         Student newStudent = new Student(sID, sName, sEmail, sMobile, sBirthdate, sGender, sBranch, sProgram, sStatus);
         
         model.addRow(new Object[] {
@@ -772,25 +798,235 @@ public class DisplayFrame extends javax.swing.JFrame {
         clearStudent();
         studentList.add(newStudent);
         dataManager.saveStudentData(studentList);
-        JOptionPane.showMessageDialog(this, "Student successfully added!","Success",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Student successfully added!","Message",JOptionPane.INFORMATION_MESSAGE);
         }     
     }//GEN-LAST:event_btnAddNewActionPerformed
-
+ }
+    private boolean isDuplicateEntry(String sID, String sName, String sEmail, String sMobile){
+        for(Student student:studentList){
+            if (sID.equals(student.getId()) || sName.equals(student.getName()) || sEmail.equals(student.getEmail()) || sMobile.equals(student.getMobile())){
+            return true;
+            }
+        }
+        return false;
+    }
     private void txtMobileKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMobileKeyTyped
         // TODO add your handling code here:
         if(!Character.isDigit(evt.getKeyChar())){
         evt.consume();
         }
     }//GEN-LAST:event_txtMobileKeyTyped
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+    private int selectRowIndex = -1;
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateActionPerformed
+        selectRowIndex = jTable2.getSelectedRow();
+
+    if (selectRowIndex != -1) { // Check if a row is selected
+        // Get data from the selected row and populate input fields
+        txtID.setText(jTable2.getValueAt(selectRowIndex, 0).toString());
+        txtName.setText(jTable2.getValueAt(selectRowIndex, 1).toString());
+        chooseBday.setDate((Date) jTable2.getValueAt(selectRowIndex, 2)); // For date input field
+        selectGender.setSelectedItem(jTable2.getValueAt(selectRowIndex, 3)); // For gender input field
+        txtEmail.setText(jTable2.getValueAt(selectRowIndex, 4).toString());
+        txtMobile.setText(jTable2.getValueAt(selectRowIndex, 5).toString());
+        selectBranch.setSelectedItem(jTable2.getValueAt(selectRowIndex, 6)); // For branch input field
+        selectProgram.setSelectedItem(jTable2.getValueAt(selectRowIndex, 7)); // For program input field
+        selectStatus.setSelectedItem(jTable2.getValueAt(selectRowIndex, 8)); // For status input field
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+            int selectedRow = jTable2.getSelectedRow();
+        if (selectedRow != -1) {
+            int confirmDelete = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this student?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+
+            if (confirmDelete == JOptionPane.YES_OPTION) {
+            // Delete the student from your data and table
+                studentList.remove(selectedRow);
+                DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+                model.removeRow(selectedRow);
+
+            // Method to save the updated data 
+                dataManager.saveStudentData(studentList);
+
+                JOptionPane.showMessageDialog(this, "Student deleted successfully.", "Message", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        if (selectRowIndex != -1) { // Check if a row is selected
+        // Get the edited data from input fields
+        String editedID = txtID.getText();
+        String editedName = txtName.getText();
+        java.util.Date editedBirthdate = chooseBday.getDate();
+        String editedGender = selectGender.getSelectedItem().toString();
+        String editedEmail = txtEmail.getText();
+        String editedMobile = txtMobile.getText();
+        String editedBranch = selectBranch.getSelectedItem().toString();
+        String editedProgram = selectProgram.getSelectedItem().toString();
+        String editedStatus = selectStatus.getSelectedItem().toString();
+       
+        if (isDuplicateEntry(selectRowIndex, editedID, editedName, editedEmail, editedMobile)) {
+            JOptionPane.showMessageDialog(this, "The provided student information already exists.", "Message", JOptionPane.WARNING_MESSAGE);
+        } else if (!isValidInput(editedID, editedName, editedBirthdate, editedEmail, editedMobile)) {
+            JOptionPane.showMessageDialog(this, "Invalid input. Please check the inputted data.","Message",JOptionPane.WARNING_MESSAGE);
+        } else {
+        // Update the data in your studentList with the edited data
+        Student editedStudent = studentList.get(selectRowIndex);
+        editedStudent.setId(editedID);
+        editedStudent.setName(editedName);
+        editedStudent.setBirthdate(editedBirthdate);
+        editedStudent.setGender(editedGender);
+        editedStudent.setEmail(editedEmail);
+        editedStudent.setMobile(editedMobile);
+        editedStudent.setBranch(editedBranch);
+        editedStudent.setProgram(editedProgram);
+        editedStudent.setStatus(editedStatus);
+
+        // Update the corresponding row in jTable2
+        jTable2.setValueAt(editedID, selectRowIndex, 0);
+        jTable2.setValueAt(editedName, selectRowIndex, 1);
+        jTable2.setValueAt(editedBirthdate, selectRowIndex, 2);
+        jTable2.setValueAt(editedGender, selectRowIndex, 3);
+        jTable2.setValueAt(editedEmail, selectRowIndex, 4);
+        jTable2.setValueAt(editedMobile, selectRowIndex, 5);
+        jTable2.setValueAt(editedBranch, selectRowIndex, 6);
+        jTable2.setValueAt(editedProgram, selectRowIndex, 7);
+        jTable2.setValueAt(editedStatus, selectRowIndex, 8);
+
+        selectRowIndex = -1;
+        clearStudent();
+        JOptionPane.showMessageDialog(this, "Changes have been successfully made.", "Messaage",JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        String searchText = txtSearchBar.getText(); // Get the search text from the text field
+
+        if (searchText != null && !searchText.isEmpty()) {
+            DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+            TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+            jTable2.setRowSorter(sorter);
+
+            // RowFilter to filter the table data
+            RowFilter<DefaultTableModel, Object> rf = RowFilter.regexFilter("(?i)" + searchText);
+            sorter.setRowFilter(rf);
+
+            if (jTable2.getRowCount() > 0) {
+                JOptionPane.showMessageDialog(this, "Student Information exists.", "Message", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Student Information does not exist.", "Message", JOptionPane.WARNING_MESSAGE);
+            }
+            jTable2.setRowSorter(null);
+        }   
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+
+        // Create a comparator to sort rows based on ID
+        StudentIdComparator idComparator = new StudentIdComparator(model);
+
+        // Create an array of indices for the rows
+        Integer[] indices = new Integer[model.getRowCount()];
+        for (int i = 0; i < indices.length; i++) {
+            indices[i] = i;
+        }
+        // Sort the indices array based on the ID comparator
+        Arrays.sort(indices, idComparator);
+
+        // Create a new data array to store the sorted rows
+        Object[][] sortedData = new Object[model.getRowCount()][model.getColumnCount()];
+        for (int i = 0; i < indices.length; i++) {
+            for (int j = 0; j < model.getColumnCount(); j++) {
+                sortedData[i][j] = model.getValueAt(indices[i], j);
+            }
+        }
+        // Remove all rows from the table
+        model.setRowCount(0);
+
+        // Add the sorted rows back to the table
+        for (Object[] row : sortedData) {
+            model.addRow(row);
+        }
+    }//GEN-LAST:event_btnRefreshActionPerformed
+    private boolean isDuplicateEntry(int rowIndex, String editedID, String editedName, String editedEmail, String editedMobile) {
+        for (int i = 0; i < studentList.size(); i++) {
+            if (i != selectRowIndex) {
+                Student student = studentList.get(i);
+                if (editedID.equals(student.getId()) || editedName.equals(student.getName()) || editedEmail.equals(student.getEmail()) || editedMobile.equals(student.getMobile())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    private boolean isValidInput(String editedID, String editedName, java.util.Date editedBirthdate, String editedEmail, String editedMobile) {
+        if(editedID.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please input Student ID.","Message",JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if(!editedID.matches("^[A-Z0-9]+$")){
+            JOptionPane.showMessageDialog(this,"Invalid input. Student ID contains invalid characters.","Message",JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if(editedID.length()>=7){
+            JOptionPane.showMessageDialog(this,"Invalid input. Student ID is too long.","Message",JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (editedID.length() <6) {
+        JOptionPane.showMessageDialog(this, "Invalid input. Student ID is too short.","Message",JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if(editedName.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please input Student Name.","Message",JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if(!editedName.matches("^[A-Za-z.\\s]+$")){
+            JOptionPane.showMessageDialog(this,"Invalid input. Student Name contains invalid characters.","Message",JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if(editedEmail.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please input Student Email Address.","Message",JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (!editedEmail.matches("^[A-Za-z0-9.@]+$")) {
+            JOptionPane.showMessageDialog(this, "Invalid input. Student Email Address is not valid.","Message",JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+
+        if(editedMobile.isEmpty()){
+            JOptionPane.showMessageDialog(this,"Please input Student Mobile Number.","Message",JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if(editedMobile.length()>=12){
+            JOptionPane.showMessageDialog(this,"Invalid input. Student Mobile Number is too long.","Message",JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (editedMobile.length() <11) {
+        JOptionPane.showMessageDialog(this, "Invalid input. Student Mobile Number is too short.","Message",JOptionPane.WARNING_MESSAGE);
+         return false;
+        }
+        if(!editedMobile.matches("^[0-9]+$")){
+            JOptionPane.showMessageDialog(this,"Invalid input. Student Mobile Number contains invalid characters.","Message",JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if(editedBirthdate==null){
+            JOptionPane.showMessageDialog(this,"Please input Student Birth Date.","Message",JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (editedBirthdate.compareTo(new java.util.Date()) > 0) {
+        JOptionPane.showMessageDialog(this, "Invalid input. Student Birth Date exceeding current date is not allowed.", "Message", JOptionPane.WARNING_MESSAGE);
+        return false;
+        }
+        return true;
+}
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -827,6 +1063,7 @@ public class DisplayFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnAddNew;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSearch;
