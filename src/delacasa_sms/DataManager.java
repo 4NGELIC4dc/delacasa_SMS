@@ -16,11 +16,15 @@ public class DataManager {
 
     public List<Student> loadStudentData() {
         List<Student> studentList = new ArrayList<>();
-        try (FileInputStream fileIn = new FileInputStream("studentData.ser");
-             ObjectInputStream in = new ObjectInputStream(fileIn)) {
-            studentList = (List<Student>) in.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        File file = new File("studentData.ser");
+
+        if (file.exists()) {
+            try (FileInputStream fileIn = new FileInputStream(file);
+                ObjectInputStream in = new ObjectInputStream(fileIn)) {
+                studentList = (List<Student>) in.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         return studentList;
     }

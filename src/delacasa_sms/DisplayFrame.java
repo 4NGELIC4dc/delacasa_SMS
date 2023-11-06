@@ -12,8 +12,14 @@ import java.text.*;
 public class DisplayFrame extends javax.swing.JFrame {
     int xx, xy;
     private DefaultTableModel model;
+    private DataManager dataManager;
+    private List<Student> studentList;
     public DisplayFrame() {
         initComponents();
+        dataManager = new DataManager();
+        studentList=dataManager.loadStudentData();
+        model=(DefaultTableModel) jTable2.getModel();
+        tableViewStudent();
         init();
     }
     @SuppressWarnings("unchecked")
@@ -194,6 +200,11 @@ public class DisplayFrame extends javax.swing.JFrame {
         btnUpdate.setBackground(new java.awt.Color(204, 255, 255));
         btnUpdate.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnAddNew.setBackground(new java.awt.Color(204, 255, 255));
         btnAddNew.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -207,6 +218,11 @@ public class DisplayFrame extends javax.swing.JFrame {
         btnDelete.setBackground(new java.awt.Color(204, 255, 255));
         btnDelete.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnClear.setBackground(new java.awt.Color(204, 255, 255));
         btnClear.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -575,6 +591,28 @@ public class DisplayFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     public void init(){
         tableViewStudent();
+        studentList=dataManager.loadStudentData();
+        populateTable();
+    }
+    private void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        model.setRowCount(0); // Clear existing rows
+
+        List<Student> studentList = dataManager.loadStudentData();
+        for (Student student : studentList) {
+            // Add student data to the table
+            model.addRow(new Object[] {
+                student.getId(),
+                student.getName(),
+                student.getBirthdate(),
+                student.getGender(),
+                student.getEmail(),
+                student.getMobile(),
+                student.getBranch(),
+                student.getProgram(),
+                student.getStatus()
+            });
+        }
     }
     private void tableViewStudent(){
         model=(DefaultTableModel) jTable2.getModel();
@@ -624,10 +662,11 @@ public class DisplayFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Please input Student Email Address.");
             return false;
         }
-        if(!txtEmail.getText().matches("^[a-z]+@[a-z]+\\.[a-z]+$")){
-            JOptionPane.showMessageDialog(this,"Invalid input. Student Email Address contains invalid characters.");
+        if (!txtEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            JOptionPane.showMessageDialog(this, "Invalid input. Student Email Address is not valid.");
             return false;
         }
+
         if(txtMobile.getText().isEmpty()){
             JOptionPane.showMessageDialog(this,"Please input Student Mobile Number.");
             return false;
@@ -718,7 +757,23 @@ public class DisplayFrame extends javax.swing.JFrame {
         String sStatus=selectStatus.getSelectedItem().toString();
         
         Student newStudent = new Student(sID, sName, sEmail, sMobile, sBirthdate, sGender, sBranch, sProgram, sStatus);
-        }
+        
+        model.addRow(new Object[] {
+            newStudent.getId(),
+            newStudent.getName(),
+            newStudent.getBirthdate(),
+            newStudent.getGender(),
+            newStudent.getEmail(),
+            newStudent.getMobile(),
+            newStudent.getBranch(),
+            newStudent.getProgram(),
+            newStudent.getStatus()
+        });
+        clearStudent();
+        studentList.add(newStudent);
+        dataManager.saveStudentData(studentList);
+        JOptionPane.showMessageDialog(this, "Student successfully added!","Success",JOptionPane.INFORMATION_MESSAGE);
+        }     
     }//GEN-LAST:event_btnAddNewActionPerformed
 
     private void txtMobileKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMobileKeyTyped
@@ -727,6 +782,14 @@ public class DisplayFrame extends javax.swing.JFrame {
         evt.consume();
         }
     }//GEN-LAST:event_txtMobileKeyTyped
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
