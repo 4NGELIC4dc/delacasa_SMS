@@ -1,8 +1,10 @@
 package delacasa_sms;
 import java.awt.Color;
+import java.awt.Component;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.util.*;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -70,7 +72,7 @@ public class DisplayFrame extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1250, 660));
+        setPreferredSize(new java.awt.Dimension(1500, 660));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -522,7 +524,7 @@ public class DisplayFrame extends javax.swing.JFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -539,11 +541,11 @@ public class DisplayFrame extends javax.swing.JFrame {
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(labelSearchStudent)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtSearchBar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSearch)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnRefresh)))
                 .addContainerGap())
         );
@@ -608,7 +610,7 @@ public class DisplayFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1250, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -627,6 +629,20 @@ public class DisplayFrame extends javax.swing.JFrame {
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
         model.setRowCount(0); // Clear existing rows
+
+        // Create a custom cell renderer for the date column
+        DefaultTableCellRenderer dateRenderer = new DefaultTableCellRenderer() {
+            private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                if (value instanceof Date) {
+                    value = dateFormat.format((Date) value);
+                }
+                return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            }
+        };
+        jTable2.getColumnModel().getColumn(2).setCellRenderer(dateRenderer); // Assuming the date column is at index 2
 
         List<Student> studentList = dataManager.loadStudentData();
         for (Student student : studentList) {
@@ -966,10 +982,23 @@ public class DisplayFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRefreshActionPerformed
     private boolean isDuplicateEntry(int rowIndex, String editedID, String editedName, String editedEmail, String editedMobile) {
+            Student editedStudent = studentList.get(rowIndex); // Get the student you're currently editing
+
         for (int i = 0; i < studentList.size(); i++) {
             if (i != selectRowIndex) {
                 Student student = studentList.get(i);
-                if (editedID.equals(student.getId()) || editedName.equals(student.getName()) || editedEmail.equals(student.getEmail()) || editedMobile.equals(student.getMobile())) {
+
+                // Check if the edited data matches any other student's information
+                if (editedID.equals(student.getId()) && !editedID.equals(editedStudent.getId())) {
+                    return true;
+                }
+                if (editedName.equals(student.getName()) && !editedName.equals(editedStudent.getName())) {
+                    return true;
+                }
+                if (editedEmail.equals(student.getEmail()) && !editedEmail.equals(editedStudent.getEmail())) {
+                    return true;
+                }
+                if (editedMobile.equals(student.getMobile()) && !editedMobile.equals(editedStudent.getMobile())) {
                     return true;
                 }
             }
@@ -1005,7 +1034,7 @@ public class DisplayFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Please input Student Email Address.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        if (!editedEmail.matches("^[A-Za-z0-9.@]+$")) {
+        if (!editedEmail.matches("^[A-Za-z0-9._@]+$")) {
             JOptionPane.showMessageDialog(this, "Invalid input. Student Email Address is not valid.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
@@ -1115,5 +1144,4 @@ public class DisplayFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtSearchBar;
     // End of variables declaration//GEN-END:variables
 
-    
 }
