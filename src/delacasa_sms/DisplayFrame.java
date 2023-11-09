@@ -24,7 +24,7 @@ public class DisplayFrame extends javax.swing.JFrame {
         model=(DefaultTableModel) jTable2.getModel();
         tableViewStudent();
         setIconImage();
-        setTitle("RGO Student Management System");
+        setTitle("RGO - SMS");
         init();
     }
     @SuppressWarnings("unchecked")
@@ -72,7 +72,7 @@ public class DisplayFrame extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1500, 660));
+        setPreferredSize(new java.awt.Dimension(1300, 650));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -368,14 +368,15 @@ public class DisplayFrame extends javax.swing.JFrame {
                     .addComponent(labelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(selectStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEdit)
-                    .addComponent(btnAddNew)
-                    .addComponent(btnClear)
-                    .addComponent(btnExit)
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDelete))
-                .addContainerGap())
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnEdit)
+                        .addComponent(btnAddNew)
+                        .addComponent(btnClear)
+                        .addComponent(btnExit)
+                        .addComponent(btnDelete))
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8))
         );
 
         jPanel5.setBackground(new java.awt.Color(102, 255, 204));
