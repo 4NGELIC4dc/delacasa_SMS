@@ -710,7 +710,7 @@ public class DisplayFrame extends javax.swing.JFrame {
             return false;
         }
         if (!txtEmail.getText().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
-            JOptionPane.showMessageDialog(this, "Invalid input. Student Email Address is not valid.","Message",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Invalid input. Student Email Address contains invalid characters.","Message",JOptionPane.WARNING_MESSAGE);
             return false;
         }
 
