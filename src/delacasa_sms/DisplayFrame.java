@@ -806,7 +806,7 @@ public class DisplayFrame extends javax.swing.JFrame {
         String sStatus=selectStatus.getSelectedItem().toString();
         
         if(isDuplicateEntry(sID, sName, sEmail, sMobile)){
-        JOptionPane.showMessageDialog(this, "Provided Student Information already exists.", "Message",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "The provided Student Information already exists.", "Message",JOptionPane.WARNING_MESSAGE);
         }else{
         Student newStudent = new Student(sID, sName, sEmail, sMobile, sBirthdate, sGender, sBranch, sProgram, sStatus);
         
