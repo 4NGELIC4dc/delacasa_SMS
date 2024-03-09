@@ -99,13 +99,13 @@ public class ScaleImage extends javax.swing.JFrame{
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(51, 70, 103));
         jPanel1.setPreferredSize(new java.awt.Dimension(1000, 700));
 
-        jPanel2.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(142, 194, 65));
 
-        jPanel6.setBackground(new java.awt.Color(102, 255, 204));
-        jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 153), 5, true));
+        jPanel6.setBackground(new java.awt.Color(64, 121, 192));
+        jPanel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(22, 72, 143), 5, true));
         jPanel6.setMaximumSize(new java.awt.Dimension(200, 200));
         jPanel6.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -120,7 +120,7 @@ public class ScaleImage extends javax.swing.JFrame{
 
         labelHeader.setBackground(new java.awt.Color(0, 102, 102));
         labelHeader.setFont(new java.awt.Font("Tahoma", 1, 25)); // NOI18N
-        labelHeader.setForeground(new java.awt.Color(0, 102, 102));
+        labelHeader.setForeground(new java.awt.Color(255, 255, 255));
         labelHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelHeader.setText("RGO Student Management System");
 
@@ -152,34 +152,53 @@ public class ScaleImage extends javax.swing.JFrame{
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1276, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel3.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(142, 194, 65));
 
-        jPanel4.setBackground(new java.awt.Color(102, 255, 204));
-        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 153), 5, true));
+        jPanel4.setBackground(new java.awt.Color(64, 121, 192));
+        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(22, 72, 143), 5, true));
 
+        txtID.setBackground(new java.awt.Color(255, 255, 255));
+        txtID.setForeground(new java.awt.Color(0, 0, 0));
+
+        txtName.setBackground(new java.awt.Color(255, 255, 255));
+        txtName.setForeground(new java.awt.Color(0, 0, 0));
+
+        chooseBday.setBackground(new java.awt.Color(255, 255, 255));
+        chooseBday.setForeground(new java.awt.Color(0, 0, 0));
         chooseBday.setDateFormatString("yyyy-MM-dd");
 
+        txtEmail.setBackground(new java.awt.Color(255, 255, 255));
+        txtEmail.setForeground(new java.awt.Color(0, 0, 0));
+
+        selectGender.setBackground(new java.awt.Color(255, 255, 255));
         selectGender.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        selectGender.setForeground(new java.awt.Color(0, 0, 0));
         selectGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male" }));
 
+        selectBranch.setBackground(new java.awt.Color(255, 255, 255));
         selectBranch.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        selectBranch.setForeground(new java.awt.Color(0, 0, 0));
         selectBranch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Davao", "Cagayan de Oro", "Butuan", "Koronadal", "General Santos" }));
 
+        selectProgram.setBackground(new java.awt.Color(255, 255, 255));
         selectProgram.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        selectProgram.setForeground(new java.awt.Color(0, 0, 0));
         selectProgram.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Psychometrician", "Civil Service", "NAPOLCOM" }));
 
+        selectStatus.setBackground(new java.awt.Color(255, 255, 255));
         selectStatus.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        selectStatus.setForeground(new java.awt.Color(0, 0, 0));
         selectStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ENROLLED", "NOT ENROLLED" }));
         selectStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +206,8 @@ public class ScaleImage extends javax.swing.JFrame{
             }
         });
 
+        txtMobile.setBackground(new java.awt.Color(255, 255, 255));
+        txtMobile.setForeground(new java.awt.Color(0, 0, 0));
         txtMobile.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtMobileKeyTyped(evt);
@@ -194,43 +215,44 @@ public class ScaleImage extends javax.swing.JFrame{
         });
 
         labelID.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        labelID.setForeground(new java.awt.Color(0, 102, 102));
+        labelID.setForeground(new java.awt.Color(255, 255, 255));
         labelID.setText("Student ID");
 
         labelName.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        labelName.setForeground(new java.awt.Color(0, 102, 102));
+        labelName.setForeground(new java.awt.Color(255, 255, 255));
         labelName.setText("Name");
 
         labelBirthdate.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        labelBirthdate.setForeground(new java.awt.Color(0, 102, 102));
+        labelBirthdate.setForeground(new java.awt.Color(255, 255, 255));
         labelBirthdate.setText("Birth Date");
 
         labelGender.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        labelGender.setForeground(new java.awt.Color(0, 102, 102));
+        labelGender.setForeground(new java.awt.Color(255, 255, 255));
         labelGender.setText("Gender");
 
         labelEmail.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        labelEmail.setForeground(new java.awt.Color(0, 102, 102));
+        labelEmail.setForeground(new java.awt.Color(255, 255, 255));
         labelEmail.setText("Email Address");
 
         labelMobile.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        labelMobile.setForeground(new java.awt.Color(0, 102, 102));
+        labelMobile.setForeground(new java.awt.Color(255, 255, 255));
         labelMobile.setText("Mobile Number");
 
         labelBranch.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        labelBranch.setForeground(new java.awt.Color(0, 102, 102));
+        labelBranch.setForeground(new java.awt.Color(255, 255, 255));
         labelBranch.setText("Branch");
 
         labelProgram.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        labelProgram.setForeground(new java.awt.Color(0, 102, 102));
+        labelProgram.setForeground(new java.awt.Color(255, 255, 255));
         labelProgram.setText("Program");
 
         labelStatus.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        labelStatus.setForeground(new java.awt.Color(0, 102, 102));
+        labelStatus.setForeground(new java.awt.Color(255, 255, 255));
         labelStatus.setText("Status");
 
-        btnEdit.setBackground(new java.awt.Color(204, 255, 255));
+        btnEdit.setBackground(new java.awt.Color(51, 70, 103));
         btnEdit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,8 +260,9 @@ public class ScaleImage extends javax.swing.JFrame{
             }
         });
 
-        btnAddNew.setBackground(new java.awt.Color(204, 255, 255));
+        btnAddNew.setBackground(new java.awt.Color(51, 70, 103));
         btnAddNew.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnAddNew.setForeground(new java.awt.Color(255, 255, 255));
         btnAddNew.setText("Add New");
         btnAddNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,8 +270,9 @@ public class ScaleImage extends javax.swing.JFrame{
             }
         });
 
-        btnDelete.setBackground(new java.awt.Color(204, 255, 255));
+        btnDelete.setBackground(new java.awt.Color(51, 70, 103));
         btnDelete.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,8 +280,9 @@ public class ScaleImage extends javax.swing.JFrame{
             }
         });
 
-        btnClear.setBackground(new java.awt.Color(204, 255, 255));
+        btnClear.setBackground(new java.awt.Color(51, 70, 103));
         btnClear.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnClear.setForeground(new java.awt.Color(255, 255, 255));
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,8 +290,9 @@ public class ScaleImage extends javax.swing.JFrame{
             }
         });
 
-        btnExit.setBackground(new java.awt.Color(204, 255, 255));
+        btnExit.setBackground(new java.awt.Color(51, 70, 103));
         btnExit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(255, 255, 255));
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,8 +300,9 @@ public class ScaleImage extends javax.swing.JFrame{
             }
         });
 
-        btnUpdate.setBackground(new java.awt.Color(204, 255, 255));
+        btnUpdate.setBackground(new java.awt.Color(51, 70, 103));
         btnUpdate.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -398,21 +425,24 @@ public class ScaleImage extends javax.swing.JFrame{
                 .addGap(7, 7, 7))
         );
 
-        jPanel5.setBackground(new java.awt.Color(102, 255, 204));
-        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 153), 5, true));
+        jPanel5.setBackground(new java.awt.Color(64, 121, 192));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(22, 72, 143), 5, true));
 
         labelSearchStudent.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        labelSearchStudent.setForeground(new java.awt.Color(0, 102, 102));
+        labelSearchStudent.setForeground(new java.awt.Color(255, 255, 255));
         labelSearchStudent.setText("Search Student");
 
+        txtSearchBar.setBackground(new java.awt.Color(255, 255, 255));
+        txtSearchBar.setForeground(new java.awt.Color(0, 0, 0));
         txtSearchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchBarActionPerformed(evt);
             }
         });
 
-        btnSearch.setBackground(new java.awt.Color(204, 255, 255));
+        btnSearch.setBackground(new java.awt.Color(51, 70, 103));
         btnSearch.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -420,8 +450,9 @@ public class ScaleImage extends javax.swing.JFrame{
             }
         });
 
-        btnRefresh.setBackground(new java.awt.Color(204, 255, 255));
+        btnRefresh.setBackground(new java.awt.Color(51, 70, 103));
         btnRefresh.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -429,8 +460,7 @@ public class ScaleImage extends javax.swing.JFrame{
             }
         });
 
-        jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 153), 5, true));
-
+        jTable2.setForeground(new java.awt.Color(0, 0, 0));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -581,7 +611,7 @@ public class ScaleImage extends javax.swing.JFrame{
                     .addComponent(labelSearchStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
